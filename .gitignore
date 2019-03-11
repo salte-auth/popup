@@ -1,0 +1,7 @@
+node_modules/
+coverage/
+dist/
+npm-debug.log*
+
+# This is written by browserstack-local... Why?
+local.log

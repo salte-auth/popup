@@ -1,0 +1,95 @@
+{
+  "name": "@salte-auth/popup",
+  "version": "1.0.0-rc.1",
+  "main": "dist/popup.min.js",
+  "module": "dist/popup.min.mjs",
+  "types": "dist/popup.d.ts",
+  "description": "A Salte Auth provider for authenticating via Popup!",
+  "homepage": "https://github.com/salte-auth/popup",
+  "bugs": "https://github.com/salte-auth/popup/issues",
+  "contributors": [
+    "Nick Woodward <nick@salte.io>",
+    "Dave Woodward <dave@salte.io>"
+  ],
+  "keywords": [
+    "salte-auth",
+    "oauth",
+    "2.0",
+    "openid",
+    "popup",
+    "authentication"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/salte-auth/popup.git"
+  },
+  "scripts": {
+    "start": "nps"
+  },
+  "license": "MIT",
+  "peerDependencies": {
+    "@salte-auth/salte-auth": "^3.0.0-rc.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.0",
+    "@babel/plugin-transform-runtime": "^7.4.3",
+    "@babel/preset-env": "^7.4.2",
+    "@babel/preset-typescript": "^7.3.3",
+    "@babel/runtime": "^7.4.3",
+    "@salte-auth/salte-auth": "^3.0.0-rc.5",
+    "@typescript-eslint/eslint-plugin": "^1.5.0",
+    "@typescript-eslint/parser": "^1.5.0",
+    "babel-plugin-istanbul": "^5.1.1",
+    "chai": "^4.2.0",
+    "coveralls": "^3.0.3",
+    "deindent": "^0.1.0",
+    "es6-promise": "^4.2.6",
+    "eslint": "^5.15.3",
+    "eslint-plugin-compat": "^3.1.1",
+    "husky": "^1.3.1",
+    "karma": "^4.0.1",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-coverage": "^1.1.2",
+    "karma-mocha": "^1.3.0",
+    "karma-mocha-reporter": "^2.2.5",
+    "karma-rollup-preprocessor": "^7.0.0",
+    "karma-sauce-launcher": "^2.0.2",
+    "karma-sourcemap-loader": "^0.3.7",
+    "lint-staged": "^8.1.5",
+    "mocha": "^6.0.2",
+    "nps": "^5.9.4",
+    "remove-lockfiles": "^2.1.3",
+    "rollup": "^1.9.0",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-commonjs": "^9.3.4",
+    "rollup-plugin-copy-assets-to": "^1.0.0",
+    "rollup-plugin-glob-import": "^0.3.1",
+    "rollup-plugin-node-resolve": "^4.2.1",
+    "rollup-plugin-serve": "^1.0.1",
+    "rollup-plugin-terser": "^4.0.4",
+    "sinon": "^7.3.1",
+    "typescript": "^3.4.2"
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "next"
+  },
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 Firefox versions",
+    "last 2 Safari versions",
+    "last 2 Edge versions",
+    "IE 11"
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && remove-lockfiles"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts}": [
+      "eslint --fix",
+      "git add"
+    ]
+  }
+}
