@@ -71,8 +71,7 @@
     "typescript": "^3.4.2"
   },
   "publishConfig": {
-    "access": "public",
-    "tag": "next"
+    "access": "public"
   },
   "browserslist": [
     "last 2 Chrome versions",
