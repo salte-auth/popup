@@ -24,6 +24,7 @@ describe('Popup', () => {
 
       expect(popup.config).to.deep.equal({
         level: 'warn',
+        navigate: 'reload',
         storage: 'session',
         window: {
           name: '@salte-auth/popup',
