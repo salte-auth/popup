@@ -1,5 +1,6 @@
 import { expect } from 'chai';
 import sinon from 'sinon';
+import { Utils } from '@salte-auth/salte-auth';
 import { Popup } from '../../src/popup';
 
 import { parseFeatures } from '../utils/parse-features';
@@ -50,7 +51,7 @@ describe('Popup', () => {
     beforeEach(() => {
       popupWindow = {
         focus: sinon.stub(),
-        close: sinon.stub().callsFake(() => popupWindow.closed = true),
+        close: () => popupWindow.closed = true,
         location: { href: 'https://google.com' }
       };
     });
@@ -96,6 +97,45 @@ describe('Popup', () => {
       }).catch((error) => error);
 
       expect(error.code).to.equal('popup_blocked');
+    });
+
+    it('should support errors', async () => {
+      sinon.stub(popupWindow, 'close').callsFake(() => {
+        popupWindow.close.restore();
+        throw new Error('Hello World!');
+      });
+      sinon.stub(window, 'open').returns(popupWindow);
+
+      popupWindow.location.href = location.href;
+
+      const promise = popup.open({
+        url: location.href,
+        redirectUrl: location.href
+      });
+
+      const error = await promise.catch((error) => error);
+
+      expect(error).to.be.an.instanceOf(Error);
+    });
+
+    it('should ignore CrossDomainErrors', async () => {
+      sinon.stub(popupWindow, 'close').callsFake(() => {
+        throw new Error('Hello World!');
+      });
+      sinon.stub(window, 'open').returns(popupWindow);
+      sinon.stub(Utils.Events, 'isCrossDomainError').returns(true);
+      popupWindow.location.href = location.href;
+
+      setTimeout(() => {
+        popupWindow.close.restore();
+      }, 200);
+
+      await popup.open({
+        url: location.href,
+        redirectUrl: location.href
+      });
+
+      expect(Utils.Events.isCrossDomainError.callCount).to.equal(1);
     });
   });
 });

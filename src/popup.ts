@@ -34,7 +34,7 @@ export class Popup extends Handler {
 
     popupWindow.focus();
     // TODO: Find a better way of tracking when a Window closes.
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       const checker = setInterval(() => {
         try {
           if (!popupWindow.closed) {
@@ -44,11 +44,18 @@ export class Popup extends Handler {
             const parsed = Utils.URL.parse(popupWindow.location);
 
             popupWindow.close();
-            setTimeout(() => resolve(parsed));
+            resolve(parsed);
           }
 
           clearInterval(checker);
-        } catch (e) {} // eslint-disable-line
+        } catch (error) {
+          if (Utils.Events.isCrossDomainError(error)) return;
+
+          popupWindow.close();
+          clearInterval(checker);
+
+          reject(error);
+        }
       }, 100);
     });
   }
@@ -61,24 +68,29 @@ export interface Popup {
 export declare namespace Popup {
   export interface Config extends Handler.Config {
     /**
-     * The name to attach to the popup window.
-     *
-     * @default 'salte-auth'
+     * The popup window configuration.
      */
-    name?: string;
+    window: {
+      /**
+       * The name to attach to the popup window.
+       *
+       * @default 'salte-auth'
+       */
+      name?: string;
 
-    /**
-     * The height of the popup window.
-     *
-     * @default 600
-     */
-    height?: number;
+      /**
+       * The height of the popup window.
+       *
+       * @default 600
+       */
+      height?: number;
 
-    /**
-     * The width of the popup window.
-     *
-     * @default 600
-     */
-    width?: number;
+      /**
+       * The width of the popup window.
+       *
+       * @default 600
+       */
+      width?: number;
+    };
   }
 }
