@@ -6,7 +6,7 @@ export class Popup extends Handler {
 
     this.config = Utils.Common.defaults(this.config, {
       window: {
-        name: '@salte-auth/tab',
+        name: '@salte-auth/popup',
         height: 600,
         width: 600
       }
@@ -74,7 +74,7 @@ export declare namespace Popup {
       /**
        * The name to attach to the popup window.
        *
-       * @default 'salte-auth'
+       * @default '@salte-auth/popup'
        */
       name?: string;
 

@@ -26,7 +26,7 @@ describe('Popup', () => {
         level: 'warn',
         storage: 'session',
         window: {
-          name: '@salte-auth/tab',
+          name: '@salte-auth/popup',
           height: 600,
           width: 600
         }
@@ -59,7 +59,7 @@ describe('Popup', () => {
     it('should return the url parameters upon returning', async () => {
       sinon.stub(window, 'open').callsFake((url, name, rawFeatures) => {
         expect(url).to.equal('https://google.com');
-        expect(name).to.equal('@salte-auth/tab');
+        expect(name).to.equal('@salte-auth/popup');
         const { height, location, menubar, status, toolbar, width } = parseFeatures(rawFeatures);
 
         expect(height).to.equal('600');
@@ -88,7 +88,7 @@ describe('Popup', () => {
       });
     });
 
-    it('should throw an error if it fails to open a new tab', async () => {
+    it('should throw an error if it fails to open a popup', async () => {
       sinon.stub(window, 'open').returns(null);
 
       const error = await popup.open({
