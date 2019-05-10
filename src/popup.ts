@@ -70,7 +70,7 @@ export declare namespace Popup {
     /**
      * The popup window configuration.
      */
-    window: {
+    window?: {
       /**
        * The name to attach to the popup window.
        *
