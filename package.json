@@ -44,7 +44,7 @@
     "coveralls": "^3.0.3",
     "deindent": "^0.1.0",
     "es6-promise": "^4.2.6",
-    "eslint": "^5.15.3",
+    "eslint": "^6.0.0",
     "eslint-plugin-compat": "^3.1.1",
     "husky": "^2.3.0",
     "karma": "^4.1.0",
