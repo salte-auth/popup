@@ -21,7 +21,7 @@ export class Popup extends Handler {
     return false;
   }
 
-  public async open(options: Handler.OpenOptions) {
+  public async open(options: Handler.OpenOptions): Promise<object> {
     const top = ((window.innerHeight / 2) - (this.config.window.height / 2)) + window.screenTop;
     const left = ((window.innerWidth / 2) - (this.config.window.width / 2)) + window.screenLeft;
     const popupWindow = window.open(options.url, this.config.window.name, `height=${this.config.window.height}, width=${this.config.window.width}, status=yes, toolbar=no, menubar=no, location=no, top=${top}, left=${left}`);
