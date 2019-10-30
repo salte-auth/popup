@@ -10,7 +10,6 @@ describe('Popup', () => {
   let popup;
   beforeEach(() => {
     popup = new Popup();
-    sinon.stub(popup, 'clear');
     sinon.stub(popup, 'navigate');
   });
 
@@ -22,15 +21,10 @@ describe('Popup', () => {
     it('should default the window configuration', () => {
       const popup = new Popup();
 
-      expect(popup.config).to.deep.equal({
-        level: 'warn',
-        navigate: 'reload',
-        storage: 'session',
-        window: {
-          name: '@salte-auth/popup',
-          height: 600,
-          width: 600
-        }
+      expect(popup.config.window).to.deep.equal({
+        name: '@salte-auth/popup',
+        height: 600,
+        width: 600
       });
     });
   });
