@@ -39,7 +39,7 @@
     "@salte-auth/salte-auth": "^3.0.0-rc.9",
     "@typescript-eslint/eslint-plugin": "^2.0.0",
     "@typescript-eslint/parser": "^2.0.0",
-    "babel-plugin-istanbul": "^5.2.0",
+    "babel-plugin-istanbul": "^6.0.0",
     "chai": "^4.2.0",
     "coveralls": "^3.0.6",
     "deindent": "^0.1.0",
