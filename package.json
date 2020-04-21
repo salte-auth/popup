@@ -55,7 +55,7 @@
     "karma-rollup-preprocessor": "^7.0.2",
     "karma-sauce-launcher": "^2.0.2",
     "karma-sourcemap-loader": "^0.3.7",
-    "lint-staged": "^10.0.3",
+    "lint-staged": "^10.1.7",
     "mocha": "^7.0.1",
     "nps": "^5.9.8",
     "remove-lockfiles": "^2.1.3",
