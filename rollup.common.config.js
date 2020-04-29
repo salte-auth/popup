@@ -6,26 +6,29 @@ const deindent = require('deindent');
 const { terser } = require('rollup-plugin-terser');
 const serve = require('rollup-plugin-serve');
 const copy = require('rollup-plugin-copy-assets-to');
+const builtins = require('rollup-plugin-node-builtins');
 
-const { name, contributors, version, browserslist } = require('./package.json');
+const { name, contributors, homepage, version, browserslist } = require('./package.json');
+
+const [, scopedName] = name.split('/');
 
 module.exports = function({ minified, es6, tests, coverage, demo, server }) {
   demo = demo || server;
 
   return {
-    input: demo ? 'demo/index.ts' : 'src/popup.ts',
+    input: demo ? 'demo/index.ts' : `src/${scopedName}.ts`,
     external: tests || server ? [] : ['@salte-auth/salte-auth'],
     output: {
-      file: `dist/popup${minified ? '.min' : ''}.${es6 ? 'mjs' : 'js'}`,
+      file: `dist/${scopedName}${minified ? '.min' : ''}.${es6 ? 'mjs' : 'js'}`,
       format: es6 ? 'es' : 'umd',
-      name: 'salte.auth.popup',
+      name: `salte.auth.${scopedName}`,
       sourcemap: tests ? 'inline' : true,
       exports: 'named',
       banner: deindent`
         /**
          * ${name} JavaScript Library v${version}
          *
-         * @license MIT (https://github.com/salte-auth/popup/blob/master/LICENSE)
+         * @license MIT (${homepage}/blob/master/LICENSE)
          *
          * Made with ♥ by ${contributors.join(', ')}
          */
@@ -36,17 +39,21 @@ module.exports = function({ minified, es6, tests, coverage, demo, server }) {
     },
 
     plugins: [
+      tests && builtins(),
+
       resolve({
         mainFields: ['main', 'browser'],
 
-        extensions: [ '.mjs', '.js', '.jsx', '.json', '.ts' ]
+        extensions: [ '.mjs', '.js', '.jsx', '.json', '.ts' ],
+        preferBuiltins: true
       }),
 
       commonjs({
         namedExports: {
+
           'chai': [ 'expect' ],
-          '@salte-auth/salte-auth': ['SalteAuth', 'SalteAuthError', 'OAuth2Provider', 'OpenIDProvider', 'Handler', 'Utils', 'Generic']
-        }
+          '@salte-auth/salte-auth': ['SalteAuth', 'SalteAuthError', 'OAuth2Provider', 'OpenIDProvider', 'Handler', 'Utils', 'Generic'],
+          '@salte-auth/redirect': ['Redirect']        }
       }),
       glob(),
 
