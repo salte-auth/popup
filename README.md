@@ -33,7 +33,6 @@
   [![Coveralls][coveralls-image]][coveralls-url]
 
   [![semantic-release][semantic-release-image]][semantic-release-url]
-  [![Greenkeeper badge][greenkeeper-image]][greenkeeper-url]
 
 </div>
 
@@ -88,6 +87,3 @@ _These are issues that we know about, but don't have a clear fix for!_
 
 [semantic-release-url]: https://github.com/semantic-release/semantic-release
 [semantic-release-image]: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
-
-[greenkeeper-image]: https://badges.greenkeeper.io/salte-auth/popup.svg
-[greenkeeper-url]: https://greenkeeper.io
