@@ -1,7 +1,3 @@
-<h3 align="center">
-	NOTE: This package is currently a work in progress and shouldn't be used!
-</h3>
-
 <h2 align="center">
   <div>
     <a href="https://github.com/salte-auth/popup">
