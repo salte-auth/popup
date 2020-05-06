@@ -1,6 +1,7 @@
 {
   "name": "@salte-auth/popup",
   "version": "3.0.0",
+  "browser": "dist/popup.min.js",
   "main": "dist/popup.min.js",
   "module": "dist/popup.min.mjs",
   "types": "dist/popup.d.ts",
