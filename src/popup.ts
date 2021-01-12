@@ -13,11 +13,11 @@ export class Popup extends Handler {
     });
   }
 
-  public get name() {
+  public get name(): string {
     return 'popup';
   }
 
-  public get auto() {
+  public get auto(): boolean {
     return false;
   }
 

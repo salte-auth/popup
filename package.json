@@ -9,7 +9,7 @@
   "homepage": "https://github.com/salte-auth/popup",
   "bugs": "https://github.com/salte-auth/popup/issues",
   "contributors": [
-    "Nick Woodward <nick@salte.io>",
+    "Ceci Woodward <ceci@salte.io>",
     "Dave Woodward <dave@salte.io>"
   ],
   "keywords": [
@@ -39,14 +39,14 @@
     "@babel/preset-typescript": "^7.9.0",
     "@babel/runtime": "^7.9.6",
     "@salte-auth/salte-auth": "^3.0.0",
-    "@typescript-eslint/eslint-plugin": "^2.30.0",
-    "@typescript-eslint/parser": "^2.30.0",
+    "@typescript-eslint/eslint-plugin": "^4.13.0",
+    "@typescript-eslint/parser": "^4.13.0",
     "babel-plugin-istanbul": "^6.0.0",
     "chai": "^4.2.0",
     "coveralls": "^3.1.0",
     "deindent": "^0.1.0",
     "es6-promise": "^4.2.8",
-    "eslint": "^6.8.0",
+    "eslint": "^7.17.0",
     "eslint-plugin-compat": "^3.5.1",
     "husky": "^4.0.2",
     "karma": "^5.0.3",
