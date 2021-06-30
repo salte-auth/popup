@@ -24,6 +24,7 @@ module.exports = function({ minified, es6, tests, coverage, demo, server }) {
       name: `salte.auth.${scopedName}`,
       sourcemap: tests ? 'inline' : true,
       exports: 'named',
+      intro: tests ? 'const global = window;' : null,
       banner: deindent`
         /**
          * ${name} JavaScript Library v${version}
