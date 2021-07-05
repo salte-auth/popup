@@ -29,7 +29,7 @@ module.exports = function({ minified, es6, tests, coverage, demo, server }) {
         /**
          * ${name} JavaScript Library v${version}
          *
-         * @license MIT (${homepage}/blob/master/LICENSE)
+         * @license MIT (${homepage}/blob/main/LICENSE)
          *
          * Made with ♥ by ${contributors.join(', ')}
          */
